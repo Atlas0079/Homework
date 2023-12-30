@@ -29,12 +29,7 @@ static void calc_overweight(float(*infos)[2], char* gender, float* overweight, c
 static void ascending_sorting(float* bmis, char* sorted_index, char n_people) {
 	for (int i = 0; i < n_people - 1; i++) {
 		for (int j = 0; j < n_people - i - 1; j++) {
-			if (bmis[j] > bmis[j + 1]) {
-
-				float temp = bmis[j];
-				bmis[j] = bmis[j + 1];
-				bmis[j + 1] = temp;
-
+			if (bmis[sorted_index[j]] > bmis[sorted_index[j + 1]]) {
 				char tempIndex = sorted_index[j];
 				sorted_index[j] = sorted_index[j + 1];
 				sorted_index[j + 1] = tempIndex;
@@ -42,6 +37,7 @@ static void ascending_sorting(float* bmis, char* sorted_index, char n_people) {
 		}
 	}
 }
+
 
 // Display the result in a terminal window
 static void display(const char** names, char* gender, float* bmis, float* overweight, char* sorted_index, char n_people)
@@ -86,8 +82,7 @@ static void display(const char** names, char* gender, float* bmis, float* overwe
 	printf("\n");
 }
 
-int main()
-{
+int main() {
 	const char* names[] = { "Song", "Zhou", "Chen", "Wang", "Zhao", "Yao", "Shen", "Liu" };
 	char gender[] = { 'M', 'F', 'M', 'M', 'F', 'M', 'F', 'F' };
 	float infos[8][2] = { {177.3, 66.1}, {162.8, 52.9}, {180.6, 103.7}, {172.3, 71.4},
@@ -111,4 +106,3 @@ int main()
 
 	return 0;
 }
-
